@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<head></head>
+<body>
+  <div id="container">
+    <!--First Line of the calculator-->
+    <div class="line" id="line1">
+      <div id="result"></div>
+    </div>
+    <!--Second Line of the Calculator-->
+    <div class="line" id="line2"></div>
+    <!--First Line of Buttons of the Calculator-->
+    <div class="line" id="line-1">
+      <button class="but" id="percent" onclick="operations('%')">%</button>
+      <button class="but" id="sqrt" onclick="operations('√')">√</button>
+      <button class="but" id="sqrd" onclick="operations('²')">x²</button>
+      <button class="but" id="answer" onclick="answer()">Ans</button>
+    </div>
+    <!--Second Line of Buttons of the Calculator-->
+    <div class="line" id="line-2">
+      <button class="but" id="clear-everything" onclick="clearEverything()">CE</button>
+      <button class="but" id="clear" onclick='clearActual()'>C</button>
+      <button class="but" id="delete" onclick="deleteChar()">DEL</button>
+      <button class="but" id="division" onclick="operations('÷')">÷</button>
+    </div>
+    <!--Third Line of Buttons of the Calculator-->
+    <div class="line" id="line-3">
+      <button class="but" id="seven" onclick="numbers(7)" value="7">7</button>
+      <button class="but" id="eight" onclick="numbers(8)">8</button>
+      <button class="but" id="nine" onclick="numbers(9)">9</button>
+      <button class="but" id="multiplication" onclick="operations('×')">×</button>
+    </div>
+    <!--Fourth Line of Buttons of the Calculator-->
+    <div class="line" id="line-4">
+      <button class="but" id="four" onclick="numbers(4)">4</button>
+      <button class="but" id="five" onclick="numbers(5)">5</button>
+      <button class="but" id="six" onclick="numbers(6)">6</button>
+      <button class="but" id="minus" onclick="operations('-')">-</button>
+    </div>
+    <!--Fifth Line of Buttons of the Calculator-->
+    <div class="line" id="line-5">
+      <button class="but" id="one" onclick="numbers(1)">1</button>
+      <button class="but" id="two" onclick="numbers(2)">2</button>
+      <button class="but" id="three" onclick="numbers(3)">3</button>
+      <button class="but" id="plus" onclick="operations('+')">+</button>
+    </div>
+    <!--Sixth Line of Buttons of the Calculator-->
+    <div class="line" id="line-5">
+
+      <button class="but" id="zero" onclick="numbers(0)">0</button>
+      <button class="but" id="+-" onclick="operations('±')">±</button>
+      <button class="but" id="equals" onclick="operations('=')">=</button>
+    </div>
+    <script type="text/javascript" src='js/general.js'></script>
+    <script type="text/javascript" src="js/commands.js"></script>
+    <script type="text/javascript" src="js/operations.js"></script>
+    <script type="text/javascript" src='js/keyboardInputs.js'></script>
+</body>
