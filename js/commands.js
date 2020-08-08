@@ -1,8 +1,8 @@
 
 function answer(){
-  factors.num1 = factors.result != undefined?factors.result:factors.num1
+  factors.currentNum = factors.result != undefined?factors.result:factors.currentNum
   showCalculus()
-  input.innerHTML = factors.num1
+  input.innerHTML = factors.currentNum
   factors.usingAnswer = true
 }
 
@@ -15,15 +15,19 @@ function clearEverything(){
 }
 
 function clearActual(){
-  factors.num1    = ""
+  factors.currentNum    = ""
   input.innerHTML = ""
   showCalculus()
   factors.usingAnswer = false
 }
 
 function deleteChar(){
-  factors.num1 = factors.num1.slice(0,-1)
-  input.innerHTML = factors.num1
+  factors.currentNum = factors.currentNum.slice(0,-1)
+  input.innerHTML = factors.currentNum
   showCalculus()
   factors.usingAnswer = false
+}
+
+function clearScreen(){
+    input.innerHTML = "";
 }
