@@ -3,139 +3,119 @@ class Operation{
     constructor(n){
         this.n = parseInt(n);
     }
-
     
-    sum(n){
-        return (this.n + n);
-    }
-
-
-    subtraction(n){
-        return (this.n - n);
-    }
-
-    multiplication(n){
-        return (this.n * n);
-    }
-
-    division(n){
-        return (this.n / n);
-    }
-
-    squareRoot(){
-        return (Math.sqrt(this.n));
-    }
-
-    squared(){
-        return (this.n * this.n);
-    }
-
-    percentage(percent){
-        return (this.n * (percent / 100));
-    }
-
-    inversion(){
-        return (this.n * -1);
-    }
-
     equals(){
-        operations(factors.receivedOperator);
-        showCalculus(operator);              
-        clearDic();
-        factors.usingAnswer = false;
+        return this.n + this.symbol + this.n2 + " = " + factors.lastAnswer;
     }
-   
+
+    normalPrint(){
+        return this.n + this.symbol;
+    }  
 }
 
 class Sum extends Operation{
+    static element = document.getElementById("sum");
+    
+
     calculate(n){
         this.n2 = parseInt(n);
-        return this.sum(n);
+        return this.n + this.n2;
     }
 
     toString(){
+        this.symbol = " + "
         if(this.n2 != null){
-            return this.n + " + " + this.n2;
+            return this.equals();
         }else{
-            return this.n + " + ";
+            return this.normalPrint();
         }
     }
 }
 
 class Subtraction extends Operation{
+    static element = document.getElementById("subtraction");
     calculate(n){
         this.n2 = parseInt(n);
-        return this.subtraction(n);
+        return this.n - this.n2;
     }
 
     toString(){
+        this.symbol = " - "
         if(this.n2 != null){
-            return this.n + " - " + this.n2;
+            return this.equals();
         }else{
-            return this.n + " - ";
+            return this.normalPrint();
         }
     }
 }
 
 class Multiplication extends Operation{
+    static element = document.getElementById("multiplication");
     calculate(n){
         this.n2 = parseInt(n);
-        return this.multiplication(n);
+        return this.n * this.n2;
     }
 
     toString(){
+        this.symbol = " × "
         if(this.n2 != null){
-            return this.n + " × " + this.n2;
+            return this.equals();
         }else{
-            return this.n + " × ";
+            return this.normalPrint();
         }
     }
 }
 
 class Division extends Operation{
+    static element = document.getElementById("division");
     calculate(n){
         this.n2 = parseInt(n);
-        return this.division(n);
+        return this.n / this.n2;
     }
 
     toString(){
+        this.symbol = " ÷ "
         if(this.n2 != null){
-            return this.n + " ÷ " + this.n2;
+            return this.equals();
         }else{
-            return this.n + " ÷ ";
+            return this.normalPrint();
         }
     }
 }
 
 class SquareRoot extends Operation{
+    static element = document.getElementById("sqrt");
     calculate(){
-        return this.squareRoot();
+        return Math.sqrt(this.n);
     }
 
     toString(){
-        return "√" + this.n;
+        return "√" + this.n + " = " + this.answer;
     }
 }
 
 class Squared extends Operation{
+    static element = document.getElementById("sqrd");
     calculate(){
-        return this.squared();
+        return this.n * this.n;
     }
 
     toString(){
-        return this.n + "²";
+        return this.n + "²" + " = " + this.answer;
     }
 }
 
 class Percentage extends Operation{
-    calculate(percent){
-        this.percent = parseInt(percent);
-        return this.percentage(percent);
+    static element = document.getElementById("percentage");
+    calculate(n2){
+        this.n2 = parseInt(n2);
+        return this.n2 * (this.n / 100);
     }
 
     toString(){
-        if(this.percent != null){
-            return this.percent + " percent of " + this.n;
+        this.symbol = " percent of ";
+        if(this.n2 != null){
+            return this.equals();
         }else{
             return this.n.toString();
         }
@@ -144,6 +124,7 @@ class Percentage extends Operation{
 }
 
 class Inversion extends Operation{
+    static element = document.getElementById("inversion");
     calculate(){
         return this.inversion();
     }
