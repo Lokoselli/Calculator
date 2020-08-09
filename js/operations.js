@@ -90,7 +90,7 @@ class SquareRoot extends Operation{
     }
 
     toString(){
-        return "√" + this.n + " = " + this.answer;
+        return "√" + this.n + " = " + factors.lastAnswer;
     }
 }
 
@@ -101,7 +101,7 @@ class Squared extends Operation{
     }
 
     toString(){
-        return this.n + "²" + " = " + this.answer;
+        return this.n + "²" + " = " + (this.n * this.n);
     }
 }
 
@@ -122,12 +122,4 @@ class Percentage extends Operation{
         
     }
 }
-
-class Inversion extends Operation{
-    static element = document.getElementById("inversion");
-    calculate(){
-        return this.inversion();
-    }
-}
-
 

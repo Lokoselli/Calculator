@@ -1,36 +1,68 @@
 //Functions
 function createEventListenerFromOperationClass(element, operation){
-    function operationListener(operation){
-        console.log(factors)
-        if(factors.currentNum == "" || factors.operation != ""){
-           return;
-        }
-      
-        factors.operation = new operation(factors.currentNum)
-        
+    element.addEventListener("click", function(){
+        operationEvent(operation);
+    })
+}
+
+function operationEvent(operation){
+    if(factors.currentNum == "" && factors.lastAnswer != "" && factors.operation == ""){
+        factors.currentNum = factors.lastAnswer;
+    }
+
+    if(factors.currentNum == "" || factors.operation != ""){
+            return;
+    }
+
+    factors.operation = new operation(factors.currentNum)
+    
+    if(classesWithSingleNumberNeeded.includes(operation)){
+        equals();
+    }else{
         updateResult();
         factors.currentNum = "";
         updateInput();
     }
-
-    element.addEventListener("click", function(){
-        operationListener(operation);
-    })
 }
+
+//Keyboard Listener
+document.onkeypress = function(e) {
+   e = e || window.event;
+    var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+    inputed = charCode ==13?charCode.toString():String.fromCharCode(charCode)
+    switch(inputed){
+        case "*": operationEvent(Multiplication); break;
+        case "/": operationEvent(Division); break;
+        case "+": operationEvent(Sum); break;
+        case "-": operationEvent(Subtraction); break;
+        case "13": equals(); break;
+        default: receiveNumberInputed(inputed);
+    }
+};
 
 
 //Operations Listeners
-var classes = [Percentage, SquareRoot, Squared, Division, Sum, Subtraction, Multiplication, Inversion]
+var classes = [Percentage, SquareRoot, Squared, Division, Sum, Subtraction, Multiplication]
+var classesWithSingleNumberNeeded = [Squared, SquareRoot]
 
 for(var i = 0; i < classes.length; i ++){
     createEventListenerFromOperationClass(classes[i].element,classes[i]);
 }
 
-document.getElementById("equals").addEventListener("click", function(){
+document.getElementById("equals").addEventListener("click", equals);
+function equals(){
     operation = factors.operation;
-    factors.lastAnswer = operation.calculate(factors.currentNum);
+    if(operation == ""){
+        return;
+    }
+    factors.lastAnswer = operation.calculate(factors.currentNum).toString();
     updateResult();
     clearFactors();
+    updateInput();
+}
+
+document.getElementById("inversion").addEventListener("click", function(){
+    factors.currentNum *= -1;
     updateInput();
 })
 
@@ -71,16 +103,18 @@ for(var i = 0; i < 10; i++){
 }
 
 function listenerNumberButton(el,num){
-    function receiveNumberInputed(num){
-        factors.currentNum += num;
-         updateInput();
-        updateResult();
-    }
     el.addEventListener("click",function(){
         receiveNumberInputed(num);
     });
 }
-
+function receiveNumberInputed(num){
+    if(isNaN(num)){
+        return;
+    }
+    factors.currentNum += num;
+     updateInput();
+    updateResult();
+}
 
 
 

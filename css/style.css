@@ -72,36 +72,16 @@ img {
   width: 83px;
 }
 
-#percent,#sqrt,#sqrd{
-  margin-right: 10px;
-}
 
-#line-2,#line-3,#line-4,#line-5,#line-6{
+#line-2,#line-3,#line-4,#line-5{
   margin-top: 10px;
 }
 
-#clear-everything,#clear,#delete{
-  margin-right: 10px;
+#line-6{
+  margin-top: 10px;
+  margin-left: -88px;
 }
-
-#seven,#eight,#nine{
-  margin-right: 10px;
-}
-
-#four,#five,#six{
-  margin-right: 10px;
-}
-
-#one,#two,#three{
-  margin-right: 10px;
-}
-
 
 #\+-,#dot{
   margin-right: 10px;
-}
-
-#zero{
-  margin-left: 95px;
-  margin-right: 10px; 
 }
